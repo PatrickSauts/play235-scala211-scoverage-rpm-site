@@ -15,19 +15,19 @@ or
 
 		mvn play2:start/stop
 
-#### hot relaod with debugging
+#### Hot relaod with debugging
 		./activator debug ~run
 
 
 ### Build rpm package (tested on centos for centos needs rpmbuild)
-		./activator rpm:packageBin<br>
+		./activator rpm:packageBin
 or
 
-		mvn package -p with-rpm<br>
+		mvn package -p with-rpm
 
-### Produce rpm and deploy it with your jars (code and source code) to your repository<br>
-		mvn deploy -P with-rpm<br>
-  - use a different repository for snapshots and released<br>
+### Produce rpm and deploy it with your jars (code and source code) to your repository
+		mvn deploy -P with-rpm
+  - use a different repository for snapshots and released
 
 ### Produce reporting maven-site with scala doc and scoverage (code coverage)
 		mvn site site:deploy
