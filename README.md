@@ -9,6 +9,20 @@ Why this project - maven integration in an IDE is far better than sbt integratio
   - This project aim to industrialize play2 akka with maven
   - Single versions modules (modules use the parent version) - use mvn version plugin for versionning 
   
+## Import in eclipse
+  - Import existing maven project
+  - Install Scala IDE from [update site](<http://download.scala-ide.org/sdk/helium/e38/scala211/stable/site/>) or [dev update site](<http://download.scala-ide.org/sdk/lithium/e38/scala211/dev/site/>)
+
+        - Add update site
+		- Choose Scala IDE and Scala IDE Plugins
+		- Continue and finish install
+   - Add scala project nature on project module
+   
+	           Right click on module project go to the end Configure --> Add Scala Nature
+
+## Install first
+		mvn clean install
+
 ## launch
 		./activator start/stop
 or
@@ -23,7 +37,7 @@ or
 		./activator rpm:packageBin
 or
 
-		mvn package -p with-rpm
+		mvn package -P with-rpm
 
 ### Produce rpm and deploy it with your jars (code and source code) to your repository
 		mvn deploy -P with-rpm
