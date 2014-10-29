@@ -29,7 +29,7 @@ or
 
 		mvn play2:start/stop
 
-#### Hot relaod with debugging
+#### Hot reload with debugging
 		./activator debug ~run
 
 
