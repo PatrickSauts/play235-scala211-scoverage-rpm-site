@@ -41,7 +41,7 @@ or
 
 ### Produce rpm and deploy it with your jars (code and source code) to your repository
 		mvn deploy -P with-rpm
-  - use a different repository for snapshots and released
+  - use a different repository for snapshots and releases
 
 ### Produce reporting maven-site with scala doc and scoverage (code coverage)
 		mvn site site:deploy
