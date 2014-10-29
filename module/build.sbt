@@ -9,8 +9,6 @@ scalaVersion := Common.scalaVersion
 
 scalacOptions += "-feature"
 
-resolvers += "Local Maven Repository" at "file://" + Path.userHome.absolutePath + "/.m2/repository"
-
 target in (Compile, TwirlKeys.compileTemplates) := target.value / "src_managed" / "main"
 
 autoScalaLibrary := true
@@ -45,13 +43,3 @@ mappings in Universal ++= Seq(
   file("conf/application-logger.xml") -> "conf/application-logger.xml",
   file("conf/prod-logger.xml") -> "conf/prod-logger.xml"
 )
-
-// -- Code Coverage
-
-//instrumentSettings
-
-publishArtifact in Test := false
-
-parallelExecution in Test := true
-
-ScoverageKeys.excludedPackages in ScoverageCompile := "<empty>;views.html.*;"

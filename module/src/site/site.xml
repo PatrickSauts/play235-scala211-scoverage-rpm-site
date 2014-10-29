@@ -13,9 +13,5 @@
   <body>
     <menu ref="parent" />
     <menu ref="reports" />
-    <menu name="reports-xtra">
-      <item name="Scaladocs" href="scaladocs/index.html" />
-      <item name="Scoverage" href="scoverage-report/overview.html" />
-    </menu>
   </body>
 </project>

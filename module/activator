@@ -308,7 +308,8 @@ if is_cygwin; then
   userhome="$USERPROFILE"
 fi
 declare -r activator_user_home_dir="${userhome}/.activator"
-declare -r java_opts_config_home="${activator_user_home_dir}/activatorconfig.txt"
+#declare -r java_opts_config_home="${activator_user_home_dir}/activatorconfig.txt"
+declare -r java_opts_config_home="./activatorconfig.txt"
 declare -r java_opts_config_version="${activator_user_home_dir}/${app_version}/activatorconfig.txt"
 
 # Now check to see if it's a good enough version

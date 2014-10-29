@@ -95,6 +95,12 @@
    <artifactId>scalatest_${play2-scala.version}</artifactId>
    <scope>test</scope>
   </dependency>
+  <dependency>
+   <groupId>org.scalamock</groupId>
+   <artifactId>scalamock-scalatest-support_2.11</artifactId>
+   <version>3.2-RC1</version>
+   <scope>test</scope>
+  </dependency>
  </dependencies>
  <!-- ======================= -->
  <!-- BUILD -->
@@ -115,15 +121,6 @@
    </resource>
   </resources>
   <plugins>
-   <!-- <plugin> -->
-   <!-- <groupId>org.nanoko.playframework</groupId> -->
-   <!-- <artifactId>play2-maven-plugin</artifactId> -->
-   <!-- <version>1.2.5</version> -->
-   <!-- <extensions>true</extensions> -->
-   <!-- <configuration> -->
-   <!-- <buildDist>false</buildDist> -->
-   <!-- </configuration> -->
-   <!-- </plugin> -->
    <plugin>
     <groupId>org.apache.maven.plugins</groupId>
     <artifactId>maven-compiler-plugin</artifactId>
@@ -166,6 +163,15 @@
      </includes>
     </configuration>
    </plugin>
+   <plugin>
+    <groupId>com.google.code.scoverage-maven-plugin</groupId>
+    <artifactId>scoverage-maven-plugin</artifactId>
+    <configuration>
+     <excludedPackages><![CDATA[com.rbcplatform.views.html.*|<empty>]]></excludedPackages>
+     <excludedFiles>.*?routes_(routing|reverseRouting);.*?package;.*?.LoggingController</excludedFiles>
+     <highlighting>true</highlighting>
+    </configuration>
+   </plugin>
    <!-- Clean project/project and project/target at clean phase -->
    <plugin>
     <artifactId>maven-clean-plugin</artifactId>
@@ -174,95 +180,13 @@
       <fileset>
        <directory>${basedir}/project</directory>
        <includes>
-        <include>project/**/*</include>
+        <include>project/*/*</include>
         <include>target/**/*</include>
        </includes>
        <followSymlinks>false</followSymlinks>
       </fileset>
      </filesets>
     </configuration>
-   </plugin>
-   <!-- Scaladocs and scoverage -->
-   <plugin>
-    <artifactId>maven-antrun-plugin</artifactId>
-    <executions>
-     <execution>
-      <id>scaladoc</id>
-      <phase>site</phase>
-      <goals>
-       <goal>run</goal>
-      </goals>
-      <configuration>
-       <target>
-        <echo message="Generating ScalaDocs" />
-        <exec dir="${basedir}" executable="${basedir}/activator" failonerror="true">
-         <arg line="doc" />
-        </exec>
-        <echo message="Generating ScalaDocs done" />
-       </target>
-      </configuration>
-     </execution>
-     <execution>
-      <id>scoverage</id>
-      <phase>site</phase>
-      <goals>
-       <goal>run</goal>
-      </goals>
-      <configuration>
-       <target>
-        <echo message="Generating Scoverage" />
-        <exec dir="${basedir}" executable="${basedir}/activator" failonerror="true">
-         <arg line="scoverage:test" />
-        </exec>
-        <echo message="Generating Scoverage done" />
-       </target>
-      </configuration>
-     </execution>
-    </executions>
-   </plugin>
-   <!-- For site generation -->
-   <plugin>
-    <artifactId>maven-resources-plugin</artifactId>
-    <executions>
-     <execution>
-      <id>copy-scaladocs-to-site</id>
-      <phase>site</phase>
-      <goals>
-       <goal>copy-resources</goal>
-      </goals>
-      <configuration>
-       <outputDirectory>${project.build.directory}/site/scoverage-report</outputDirectory>
-       <overwrite>true</overwrite>
-       <resources>
-        <resource>
-         <directory>${project.build.directory}/scoverage-report</directory>
-         <includes>
-          <include>**/*</include>
-         </includes>
-        </resource>
-       </resources>
-      </configuration>
-     </execution>
-     <execution>
-      <id>copy-scovergae-to-site</id>
-      <phase>site</phase>
-      <goals>
-       <goal>copy-resources</goal>
-      </goals>
-      <configuration>
-       <outputDirectory>${project.build.directory}/site/scaladocs</outputDirectory>
-       <overwrite>true</overwrite>
-       <resources>
-        <resource>
-         <directory>${project.build.directory}/api</directory>
-         <includes>
-          <include>**/*</include>
-         </includes>
-        </resource>
-       </resources>
-      </configuration>
-     </execution>
-    </executions>
    </plugin>
   </plugins>
  </build>
@@ -283,7 +207,6 @@
         <configuration>
          <target>
           <echo message="Generating rpm" />
-<!--           <delete dir="${project.build.directory}/src_managed" /> -->
           <exec dir="${basedir}" executable="${basedir}/activator" failonerror="true">
            <arg line="rpm:packageBin" />
           </exec>
@@ -317,6 +240,15 @@
       </reports>
      </reportSet>
     </reportSets>
+   </plugin>
+   <plugin>
+    <groupId>com.google.code.scoverage-maven-plugin</groupId>
+    <artifactId>scoverage-maven-plugin</artifactId>
+   </plugin>
+   <plugin>
+    <groupId>net.alchim31.maven</groupId>
+    <artifactId>scala-maven-plugin</artifactId>
+    <version>3.2.0</version>
    </plugin>
   </plugins>
  </reporting>
