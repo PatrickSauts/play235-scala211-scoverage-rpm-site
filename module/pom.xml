@@ -167,8 +167,8 @@
     <groupId>com.google.code.scoverage-maven-plugin</groupId>
     <artifactId>scoverage-maven-plugin</artifactId>
     <configuration>
-     <excludedPackages><![CDATA[com.rbcplatform.views.html.*|<empty>]]></excludedPackages>
-     <excludedFiles>.*?routes_(routing|reverseRouting);.*?package;.*?.LoggingController</excludedFiles>
+     <excludedPackages>com.github.views.html.*|(empty)</excludedPackages>
+     <excludedFiles>.*?routes_(routing|reverseRouting);.*?.LoggingFilter</excludedFiles>
      <highlighting>true</highlighting>
     </configuration>
    </plugin>

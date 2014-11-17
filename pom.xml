@@ -26,11 +26,11 @@
   <compiler.version>1.8</compiler.version>
   <scala.version>2.11.2</scala.version>
   <play2-scala.version>2.11</play2-scala.version>
-  <play2.plugin.version>1.0.0-alpha8</play2.plugin.version>
+  <play2.plugin.version>1.0.0-alpha9</play2.plugin.version>
   <play2.version>2.3.5</play2.version>
   <play-doc.version>1.2.1</play-doc.version>
   <play-cache.version>2.3.0</play-cache.version>
-  <sbt-compiler.plugin.version>1.0.0-beta4</sbt-compiler.plugin.version>
+  <sbt-compiler.plugin.version>1.0.0-beta5</sbt-compiler.plugin.version>
   <nscala-time.version>1.4.0</nscala-time.version>
   <commons-lang3.version>3.3.2</commons-lang3.version>
   <reactivemongo.version>0.10.5.0.akka23</reactivemongo.version>
