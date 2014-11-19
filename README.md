@@ -30,7 +30,7 @@ or
 		mvn play2:start/stop
 
 #### Hot reload with debugging
-		$ ./activator -jvm-debug 9999 run
+		$ ./activator -jvm-debug 9999 ~run
 
 
 ### Build rpm package (tested on centos for centos needs rpmbuild)
